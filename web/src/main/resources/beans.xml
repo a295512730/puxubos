@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:foo="http://cxf.apache.org/configuration/foo"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xmlns:soap="http://cxf.apache.org/bindings/soap"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/bindings/soap
+http://cxf.apache.org/schemas/configuration/soap.xsd
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml"></import>
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml"></import>
+
+
+
+
+	<jaxrs:server id="customerService" address="/CustomerService">
+		<jaxrs:serviceBeans>
+			<ref bean="customerServiceImpl"></ref>
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<bean id="customerServiceImpl" class="org.framework.web.rs.impl.CustomerServiceImpl"></bean>
+
+</beans>
+
+
+
